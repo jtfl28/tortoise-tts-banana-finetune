@@ -1,4 +1,5 @@
 tqdm
+sox
 rotary_embedding_torch
 transformers==4.19
 tokenizers
