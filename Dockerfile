@@ -10,6 +10,8 @@ RUN apt-get update && apt-get install -y git
 RUN pip3 install --upgrade pip
 ADD requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
+ADD setup.py .
+CMD python3 setup.py install
 
 # We add the banana boilerplate here
 ADD . .
