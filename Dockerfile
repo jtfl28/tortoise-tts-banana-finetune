@@ -5,7 +5,7 @@ WORKDIR /
 
 # Install git
 RUN apt-get update && apt-get install -y git
-RUN apt-get install libsndfile1
+RUN apt-get install -y libsndfile1
 
 # Install python packages
 RUN pip3 install --upgrade pip
