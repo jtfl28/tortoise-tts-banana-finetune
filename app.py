@@ -8,8 +8,8 @@ import torchaudio
 
 from scipy.io import wavfile
 
-from api import TextToSpeech
-from utils.audio import load_voices, mp3_bytes_from_wav_bytes
+from tortoise.api import TextToSpeech
+from tortoise.utils.audio import load_voices, mp3_bytes_from_wav_bytes
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"

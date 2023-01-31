@@ -1,4 +1,4 @@
-from api import TextToSpeech
+from tortoise.api import TextToSpeech
 
 def download_model():
     tts = TextToSpeech()

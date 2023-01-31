@@ -21,7 +21,9 @@ RUN python3 download.py
 
 
 # Add your custom app code, init() and inference()
+ADD tortoise .
 ADD app.py .
+
 
 EXPOSE 8000
 
