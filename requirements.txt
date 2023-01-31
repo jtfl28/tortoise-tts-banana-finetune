@@ -14,3 +14,4 @@ torchaudio
 threadpoolctl
 llvmlite
 appdirs
+sanic==22.6.2
