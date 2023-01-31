@@ -23,9 +23,7 @@ def init():
 # Reference your preloaded global model variable here.
 def inference(model_inputs:dict) -> dict:
     global model
-
-
-
+    
     text = model_inputs.get('text', None)
     voice = model_inputs.get('voice', 'random')
     preset = model_inputs.get('preset', 'fast')
