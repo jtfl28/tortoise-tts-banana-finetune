@@ -15,8 +15,10 @@ from tortoise.utils.audio import load_voice, mp3_bytes_from_wav_bytes
 
 def download_custom_voice(url):
     response = requests.get(url)
-    wav = io.BytesIO(response.content)
-    return wav
+    custom_voice_folder = f"tortoise/voices/custom"
+    os.makedirs(custom_voice_folder)
+    with open(os.path.join(custom_voice_folder, 'input.wav'), 'wb') as f:
+        f.write(response.content)
 
 
 # Init is ran on server startup
@@ -35,17 +37,13 @@ def inference(model_inputs:dict) -> dict:
     text = model_inputs.get('text', None)
     voice = model_inputs.get('voice', 'random')
     preset = model_inputs.get('preset', 'fast')
+
+    # get custom wav file
     if voice == 'custom':
         custom_voice_url = model_inputs.get('custom_voice_url', None)
         if custom_voice_url == None:
             return {'message': "Custom voice requires url of audio sample"}
-    
-        wavBytes = download_custom_voice(custom_voice_url)
-        
-        custom_voice_folder = f"tortoise/voices/{voice}"
-        os.makedirs(custom_voice_folder)
-        with open(os.path.join(custom_voice_folder, 'input.wav'), 'wb') as f:
-            f.write(wavBytes.getbuffer())
+        download_custom_voice(custom_voice_url)
 
     voice_samples, conditioning_latents = load_voice(voice)
     
