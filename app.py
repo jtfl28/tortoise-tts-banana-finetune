@@ -10,7 +10,7 @@ import torchaudio
 from scipy.io import wavfile
 
 from tortoise.api import TextToSpeech
-from tortoise.utils.audio import load_voices, mp3_bytes_from_wav_bytes
+from tortoise.utils.audio import load_voice, mp3_bytes_from_wav_bytes
 
 
 def download_custom_voice(url):
