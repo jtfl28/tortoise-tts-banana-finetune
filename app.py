@@ -58,9 +58,9 @@ def inference(model_inputs:dict) -> dict:
     wav_bytes = io.BytesIO()
     wavfile.write(wav_bytes, 24000, gen.squeeze().cpu().numpy())
     wav_bytes.seek(0)
-    mp3Bytes = mp3_bytes_from_wav_bytes(wav_bytes)
+    mp3_bytes = mp3_bytes_from_wav_bytes(wav_bytes)
 
-    result = { audio: "data:audio/mpeg;base64," + base64_encode(mp3_bytes)}
+    result = { 'audio': "data:audio/mpeg;base64," + base64_encode(mp3_bytes)}
 
     # Return the results as a dictionary
     return result
