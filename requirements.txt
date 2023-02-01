@@ -5,6 +5,7 @@ tokenizers
 inflect
 progressbar
 einops
+pydub
 unidecode
 scipy
 librosa
