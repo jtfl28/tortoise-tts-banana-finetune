@@ -3,6 +3,7 @@ import argparse
 import os
 import io
 import requests
+import base64
 
 import torch
 import torchaudio
@@ -20,6 +21,12 @@ def download_custom_voice(url):
     with open(os.path.join(custom_voice_folder, 'input.wav'), 'wb') as f:
         f.write(response.content)
 
+
+def base64_encode(buffer: io.BytesIO) -> str:
+    """
+    Encode the given buffer as base64.
+    """
+    return base64.encodebytes(buffer.getvalue()).decode("ascii")
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
