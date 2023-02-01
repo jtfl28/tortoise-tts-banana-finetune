@@ -2,6 +2,7 @@
 import argparse
 import os
 import io
+import requests
 
 import torch
 import torchaudio
@@ -10,6 +11,13 @@ from scipy.io import wavfile
 
 from tortoise.api import TextToSpeech
 from tortoise.utils.audio import load_voices, mp3_bytes_from_wav_bytes
+
+
+def download_custom_voice(url):
+    response = requests.get(url)
+    wav = io.BytesIO(response.content)
+    return wav
+
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
@@ -28,11 +36,11 @@ def inference(model_inputs:dict) -> dict:
     voice = model_inputs.get('voice', 'random')
     preset = model_inputs.get('preset', 'fast')
     if voice == 'custom':
-        wavBytesString = model_inputs.get('wavBytesString', None)
-        if wavBytesString == None:
-            return {'message': "Custom voice requires audio sample"}
+        custom_voice_url = model_inputs.get('custom_voice_url', None)
+        if custom_voice_url == None:
+            return {'message': "Custom voice requires url of audio sample"}
     
-        wavBytes = BytesIO(base64.b64decode(wavBytesString.encode("ISO-8859-1")))
+        wavBytes = download_custom_voice(custom_voice_url)
         
         custom_voice_folder = f"tortoise/voices/{voice}"
         os.makedirs(custom_voice_folder)

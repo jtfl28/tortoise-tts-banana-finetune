@@ -5,7 +5,7 @@
         "text": "Joining two modalities results in a surprising increase in generalization! What would happen if we combined them all?",
         "voice": "custom",
         "preset": "fast",
-        "wavBytesString": "<BASE64_STRING>"
+        "custom_voice_url": "<url to wav file>"
     },
     "example_output": {"audio": "data:audio/mpeg;base64,iVBORw0KGgoAAAANSUhEUgAACSgAAASwCAYA..."},
     "version": "1"
