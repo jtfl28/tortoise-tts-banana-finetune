@@ -189,10 +189,3 @@ def wav_to_univnet_mel(wav, do_normalization=False, device='cuda'):
     if do_normalization:
         mel = normalize_tacotron_mel(mel)
     return mel
-
-def mp3_bytes_from_wav_bytes(wav_bytes: io.BytesIO) -> io.BytesIO:
-    mp3_bytes = io.BytesIO()
-    sound = pydub.AudioSegment.from_wav(wav_bytes)
-    sound.export(mp3_bytes, format="mp3")
-    mp3_bytes.seek(0)
-    return mp3_bytes

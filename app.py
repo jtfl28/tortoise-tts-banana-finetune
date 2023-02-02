@@ -11,7 +11,7 @@ import torchaudio
 from scipy.io import wavfile
 
 from tortoise.api import TextToSpeech
-from tortoise.utils.audio import load_voice, mp3_bytes_from_wav_bytes
+from tortoise.utils.audio import load_voice
 
 
 def download_custom_voice(url):
@@ -27,6 +27,13 @@ def base64_encode(buffer: io.BytesIO) -> str:
     Encode the given buffer as base64.
     """
     return base64.encodebytes(buffer.getvalue()).decode("ascii")
+
+def mp3_bytes_from_wav_bytes(wav_bytes: io.BytesIO) -> io.BytesIO:
+    mp3_bytes = io.BytesIO()
+    sound = pydub.AudioSegment.from_wav(wav_bytes)
+    sound.export(mp3_bytes, format="mp3")
+    mp3_bytes.seek(0)
+    return mp3_bytes
 
 # Init is ran on server startup
 # Load your model to GPU as a global variable here using the variable name "model"
