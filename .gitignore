@@ -133,3 +133,10 @@ dmypy.json
 .custom/*
 results/*
 debug_states/*
+.vs/slnx.sqlite
+.vs/PythonSettings.json
+.vs/tortoise-tts-banana-finetune/FileContentIndex/read.lock
+.vs/tortoise-tts-banana-finetune/FileContentIndex/b851ae99-be0d-45cc-bcef-47891c32d999.vsidx
+.vs/tortoise-tts-banana-finetune/FileContentIndex/fcb1549e-96a9-43b8-b51c-cd26c43a89c9.vsidx
+.vs/tortoise-tts-banana-finetune/v17/.wsuo
+.vs/tortoise-tts-banana-finetune/FileContentIndex/3a774dc1-11f0-495b-99c4-98afa3043111.vsidx

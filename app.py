@@ -13,7 +13,8 @@ from scipy.io import wavfile
 
 from tortoise.api import TextToSpeech
 from tortoise.utils.audio import load_voice
-
+#from huggingface_hub import hf_hub_url
+#url = hf_hub_url(repo_id = "jtfl28/finetune-tortoise",subfolder ="nnf/models", filename="1000_gpt.pth")
 
 def download_custom_voice(url):
     response = requests.get(url)
