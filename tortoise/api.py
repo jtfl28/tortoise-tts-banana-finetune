@@ -39,8 +39,7 @@ MODELS = {
     'rlg_diffuser.pth': 'https://huggingface.co/jbetker/tortoise-tts-v2/resolve/main/.models/rlg_diffuser.pth',
 }
 #custom models
-MODELS = {
-    'autoregressive.pth': 'https://huggingface.co/jtfl28/finetune-tortoise/resolve/main/nnf/models/1000_gpt.pth'}
+MODELS['autoregressive.pth']= 'https://huggingface.co/jtfl28/finetune-tortoise/resolve/main/nnf/models/1000_gpt.pth'
 
 def download_models(specific_models=None):
     """
